@@ -1,4 +1,4 @@
-package com.klunx.mymessenger
+package com.klunx.mymessengeraction
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

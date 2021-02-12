@@ -1,4 +1,4 @@
-package com.klunx.mymessenger
+package com.klunx.mymessengeraction
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +14,12 @@ class CreateMessageActivity : AppCompatActivity() {
 
     fun onSendMessage(view: View) {
         val messageToBeSent:EditText = findViewById(R.id.message)
-        val intent: Intent = Intent(this, ReceiveMessageActivity::class.java).apply {
-            putExtra("message", messageToBeSent.text.toString())
+        val intent: Intent = Intent(Intent.ACTION_SEND).apply {
+            setType("text/plain")
+            putExtra(Intent.EXTRA_TEXT, messageToBeSent.text.toString())
         }
-        startActivity(intent)
+        val chooserTitle: String = getString(R.string.chooser)
+        val chosenItent = Intent.createChooser(intent, chooserTitle)
+        startActivity(chosenItent)
     }
 }
